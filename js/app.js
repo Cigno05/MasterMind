@@ -15,28 +15,16 @@ function generateUniqueNumbers(min, max, count) {
         const  number=  getRandomArbitrary(min, max); //number
 
         //dichiaro una variabile di controllo per vedere se il numero è un duplicato
-        let isDuplicate = false; //boolean
 
         if (numbers.includes(number) === false){
             numbers.push(number); 
         }
 
-        /*
-        for (let i = 0; i < numbers.length; i++){
-            //controllo se il numero generato è già presente in tutto l'array
-            if (number === numbers[i]){
-                isDuplicate = true;
-            }          
-        }
-        // se non è presente lo aggiungo all'array
-        if(isDuplicate === false){
-            numbers.push(number); 
-        }
-        */
+    
 
     } while (numbers.length !== count)
 
-    //restituisco l'array con la posizione delle bombe
+    //restituisco l'array i numeri generati
     return numbers;
 }
 
@@ -60,12 +48,51 @@ const playerNumber = document.querySelector('#number');
 
 const checkNumberArray = generateUniqueNumbers(1,10,4);
 
+
 playBtn.addEventListener('click', function() {
 
     const playerNumberValue = playerNumber.value;
     const playerNumerArray = convertStringToNumberArray(playerNumberValue);
+    let counter = 0;
+    for (let index = 0; index < playerNumerArray.length; index++) {
+        const indexChecked = checkNumberArray.indexOf(playerNumerArray[index]);
+
+        if (indexChecked !== -1) {
+            counter++;
+        }
+        console.log(indexChecked)
+    }
+
+    // for (let index = 0; index < checkNumberArray.length; index++) {
+    //     const indexPlayer = playerNumerArray.indexOf(checkNumberArray[index]);
+
+    //     if (indexPlayer !== -1) {
+    //         counter++;
+    //     }
+    //     console.log(indexPlayer)
+    // }
+
+
+
+
+
+    console.log('playerNumerArray ', playerNumerArray)
+    console.log('checkNumberArray', checkNumberArray)
+    console.log('counter', counter);
+
+
+
+
+
+
+
+
+
+
     
 });
+
+
 
 
 
