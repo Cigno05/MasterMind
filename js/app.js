@@ -53,12 +53,18 @@ playBtn.addEventListener('click', function() {
 
     const playerNumberValue = playerNumber.value;
     const playerNumerArray = convertStringToNumberArray(playerNumberValue);
-    let counter = 0;
+    let counter = '';
     for (let index = 0; index < playerNumerArray.length; index++) {
         const indexChecked = checkNumberArray.indexOf(playerNumerArray[index]);
 
         if (indexChecked !== -1) {
-            counter++;
+            if (indexChecked === index) {
+                counter += 'X';
+            }else {
+                counter += 'O'
+            }
+
+
         }
         console.log(indexChecked)
     }
@@ -72,17 +78,24 @@ playBtn.addEventListener('click', function() {
     //     console.log(indexPlayer)
     // }
 
-
+const resultDOMElement = document.getElementById('risultato');
+resultDOMElement.innerHTML = `
+<h2>${counter}</h2>
+`
 
 
 
     console.log('playerNumerArray ', playerNumerArray)
     console.log('checkNumberArray', checkNumberArray)
-    console.log('counter', counter);
+    console.log('risultato', counter);
 
 
 
-
+    if (counter === 'XXXX') {
+        resultDOMElement.innerHTML = `
+<h2>Hai Vinto!!!</h2>
+`
+    }
 
 
 
